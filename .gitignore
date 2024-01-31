@@ -1,9 +1,15 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-/target/
+
+# Игнорировать скомпилированные файлы и артефакты сборки
+/target/*
 
 # Eclipse
+# Игнорировать файлы проекта Eclipse
+.classpath
+.project
+.settings/
 bin/
 tmp/
 *.tmp
@@ -11,11 +17,11 @@ tmp/
 *.swp
 *~
 
-# IntelliJ IDEA
-.idea/
+# Игнорировать файлы проекта IntelliJ IDEA
 *.iml
 *.iws
-*.iwb
+*.ipr
+.idea/
 
 # Compiled class files
 *.class
