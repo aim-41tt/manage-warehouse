@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Склад</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Поиск на складе</h2>
+        <form action="/searchWarehouse" method="post">
+            <label for="searchByName">Поиск по названию товара:</label>
+            <input type="text" id="searchByName" name="searchByName">
+
+            <label for="searchByType">Поиск по типу товара:</label>
+            <input type="text" id="searchByType" name="searchByType">
+
+            <button type="submit">Найти товар</button>
+        </form>
+
+        <!-- Отображение найденных товаров -->
+        <div th:if="${foundProducts}">
+            <h3>Найденные товары:</h3>
+            <ul>
+                <li th:each="product : ${foundProducts}">
+                    <span th:text="${product.productName}"></span>
+                    <span th:text="${product.price}"></span>
+                    <span th:text="${product.productType}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

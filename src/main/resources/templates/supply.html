@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Поставки</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Запись поставок</h2>
+        <form action="/processSupply" method="post">
+            <label for="productName">Название товара:</label>
+            <input type="text" id="productName" name="productName" required>
+
+            <label for="price">Цена за 1 шт:</label>
+            <input type="number" id="price" name="price" required>
+
+            <label for="productType">Тип товара:</label>
+            <input type="text" id="productType" name="productType" required>
+
+            <button type="submit">Записать поставку</button>
+        </form>
+    </div>
+</body>
+</html>
