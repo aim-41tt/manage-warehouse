@@ -19,9 +19,9 @@ public class WorkingOnProducts {
     public static List<ProductEntitiy> getSortList(String text) {
 		
 		List<ProductEntitiy> sortList = new ArrayList<ProductEntitiy>();
-	   	 
-	   	for(ProductEntitiy product: HibernateUtil.getEntities(ProductEntitiy.class)) {
-	   		if(product.getProductName().contains(text) || text != null && text.trim().isEmpty() ) {
+		List<ProductEntitiy> List = HibernateUtil.getEntities(ProductEntitiy.class);
+	   	for(ProductEntitiy product:List ) {
+	   		if(product.getProductName().contains(text)) {
 	   			sortList.add(product);
 	   		}
 	   	}

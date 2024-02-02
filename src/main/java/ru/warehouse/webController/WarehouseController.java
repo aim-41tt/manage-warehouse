@@ -21,7 +21,7 @@ public class WarehouseController {
     @PostMapping("/searchWarehouse")
     public String searchWarehouse(Model model, String searchByName, String searchByType) {
 
-         model.addAttribute("foundProducts", WorkingOnProducts.getSortList(searchByType));
+         model.addAttribute("foundProducts", WorkingOnProducts.getSortList(searchByName));
 
     		        return "warehouse";
     }

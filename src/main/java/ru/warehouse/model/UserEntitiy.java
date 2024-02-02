@@ -1,11 +1,11 @@
 package ru.warehouse.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity 
 @Table(name = "Users")
@@ -13,7 +13,7 @@ public class UserEntitiy {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
+        private Long id;
 
         @Column(name = "UserName")
         private String userName;
@@ -23,17 +23,17 @@ public class UserEntitiy {
 
     	public UserEntitiy() {}
     	
-		public UserEntitiy(long id, String userName, String password) {
+		public UserEntitiy(Long id, String userName, String password) {
 			this.id = id;
 			this.userName = userName;
 			this.password = password;
 		}
 
-		public long getId() {
+		public Long getId() {
 			return id;
 		}
 
-		public void setUserId(long id) {
+		public void setId(Long id) {
 			this.id = id;
 		}
 
@@ -52,8 +52,6 @@ public class UserEntitiy {
 		public void setPassword(String password) {
 			this.password = password;
 		}
-        
-        
-        
-    
+
+		
 }

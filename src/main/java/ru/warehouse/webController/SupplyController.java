@@ -23,12 +23,12 @@ public class SupplyController {
 						            @RequestParam("price") double price,
 						            @RequestParam("productType") String productType,
 						            Model model) {   
-    	ProductEntitiy productEntitiy = new ProductEntitiy();
+    	ProductEntitiy product = new ProductEntitiy();
 		 
-		 productEntitiy.setPrice(price);
-		 productEntitiy.setProductName(productName);
-		 productEntitiy.setProductType(productType);
-		 HibernateUtil.saveOrUpdateEntity(productEntitiy);
+		 product.setPrice(price);
+		 product.setProductName(productName);
+		 product.setProductType(productType);
+		 HibernateUtil.saveOrUpdateEntity(product);
         return "supply";
     }
 }
