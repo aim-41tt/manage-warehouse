@@ -5,12 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-
-@Entity 
-@Table(name = "Product")
-public class ProductEntitiy {
+@Entity
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +22,9 @@ public class ProductEntitiy {
 	 @Column(name = "productType")
     private String productType;
 
-    public ProductEntitiy () {}
+    public Product () {}
 
-	public ProductEntitiy(Long id, String productName, double price, String productType) {
-		this.id = id;
+	public Product(String productName, double price, String productType) {
 		this.productName = productName;
 		this.price = price;
 		this.productType = productType;

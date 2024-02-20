@@ -1,18 +1,21 @@
-package ru.warehouse.webController;
+package ru.warehouse.WebController;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ru.warehouse.db.HibernateUtil;
-import ru.warehouse.model.ProductEntitiy;
-
+import ru.warehouse.model.Product;
+import ru.warehouse.repositorys.ProductRepository;
 
 @Controller
 public class SupplyController {
 
+	@Autowired 
+	private ProductRepository ProductRepository;
+	
     @RequestMapping("/supply")
     public String showSupplyForm(Model model) {
         return "supply";
@@ -23,12 +26,12 @@ public class SupplyController {
 						            @RequestParam("price") double price,
 						            @RequestParam("productType") String productType,
 						            Model model) {   
-    	ProductEntitiy product = new ProductEntitiy();
+    	Product product = new Product();
 		 
 		 product.setPrice(price);
 		 product.setProductName(productName);
 		 product.setProductType(productType);
-		 HibernateUtil.saveOrUpdateEntity(product);
+		 ProductRepository.save(product);
         return "supply";
     }
 }

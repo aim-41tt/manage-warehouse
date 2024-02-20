@@ -13,15 +13,11 @@
 
     <properties>
 	    <java.version>11</java.version>
-	    <postgresql.version>42.7.1</postgresql.version>
-	    <hibernate.version>5.6.3.Final</hibernate.version>
+	    <!--  <postgresql.version>42.7.1</postgresql.version>-->
 	</properties>
 
     <dependencies>
-        <!-- Дополнительные зависимости для Spring Security -->
-        
 
-        <!-- Зависимость для работы с формами -->
        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -31,16 +27,14 @@
          <dependency>
 	        <groupId>org.postgresql</groupId>
     		<artifactId>postgresql</artifactId>
-    		 <version>${postgresql.version}</version>
     	</dependency>
 
-	    <!-- Зависимость для Hibernate -->
-	    <dependency>
-	        <groupId>org.hibernate</groupId>
-	        <artifactId>hibernate-core</artifactId>
-	        <version>${hibernate.version}</version>
-	    </dependency>
-
+		
+	    
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
         <!-- Зависимость для веб-разработки -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
