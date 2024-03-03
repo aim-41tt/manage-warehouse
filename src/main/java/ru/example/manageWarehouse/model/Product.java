@@ -1,10 +1,10 @@
-package ru.warehouse.model;
+package ru.example.manageWarehouse.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Product {
@@ -21,10 +21,11 @@ public class Product {
 	 
 	 @Column(name = "productType")
     private String productType;
-
+	 
     public Product () {}
-
+        
 	public Product(String productName, double price, String productType) {
+		super();
 		this.productName = productName;
 		this.price = price;
 		this.productType = productType;
@@ -62,7 +63,6 @@ public class Product {
 		this.productType = productType;
 	}
 
-	
     
-
+    
 }
