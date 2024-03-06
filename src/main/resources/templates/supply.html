@@ -15,9 +15,16 @@
 
             <label for="price">Цена за 1 шт:</label>
             <input type="number" id="price" name="price" required>
-
-            <label for="productType">Тип товара:</label>
-            <input type="text" id="productType" name="productType" required>
+            
+            <label for="productKol">Количество в (шт):</label>
+            <input type="number" id="kol" name="kol" required>
+                      
+            <select id="productTypeId" name="productTypeId" required>
+                <option value="">Выберите тип товара</option>
+                <th:block th:each="type : ${productTypesList}">
+                <option th:value="${type.id}" th:text="${type.name}"></option>
+                </th:block>
+            </select>
 
             <button type="submit">Записать поставку</button>
         </form>

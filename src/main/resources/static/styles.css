@@ -22,7 +22,7 @@ label {
     margin-bottom: 8px;
 }
 
-input {
+input,select {
     padding: 8px;
     margin-bottom: 16px;
     border: 1px solid #ccc;

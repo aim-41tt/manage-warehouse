@@ -18,17 +18,29 @@ public class Product {
 	 
 	 @Column(name = "price")
     private double price;
+	 	 
+	 @Column(name="typeId")
+	private Long typeId;
 	 
-	 @Column(name = "productType")
-    private String productType;
+	 @Column(name="kol")
+	private Long kol;
 	 
-    public Product () {}
+	 	 
+    public Long getTypeId() {
+		return typeId;
+	}
+
+	public void setTypeId(Long typeId) {
+		this.typeId = typeId;
+	}
+
+	public Product () {}
         
-	public Product(String productName, double price, String productType) {
-		super();
+	public Product(String productName, double price, Long typeId , Long kol) {
 		this.productName = productName;
 		this.price = price;
-		this.productType = productType;
+		this.typeId = typeId;
+		this.kol = kol;
 	}
 
 	public Long getId() {
@@ -55,14 +67,14 @@ public class Product {
 		this.price = price;
 	}
 
-	public String getProductType() {
-		return productType;
+	public Long getKol() {
+		return kol;
 	}
 
-	public void setProductType(String productType) {
-		this.productType = productType;
+	public void setKol(Long kol) {
+		this.kol = kol;
 	}
 
-    
+	  
     
 }

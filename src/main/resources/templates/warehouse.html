@@ -9,28 +9,37 @@
 <body>
     <div class="container">
         <h2>Поиск на складе</h2>
+        
         <form action="/searchWarehouse" method="post">
             <label for="searchByName">Поиск по названию товара:</label>
             <input type="text" id="searchByName" name="searchByName">
+			
+			<select id="searchByType" name="searchByType" required>
+                <option value=0>Типы товаров:</option>
+                <th:block th:each="type : ${productTypesList}">
+                <option th:value="${type.id}" th:text="${type.name}"></option>
+                </th:block>
+            </select>
 
-            <label for="searchByType">Поиск по типу товара:</label>
-            <input type="text" id="searchByType" name="searchByType">
-
+           
             <button type="submit">Найти товар</button>
         </form>
 
         <!-- Отображение найденных товаров -->
+        
         <div th:if="${foundProducts}">
             <h3>Найденные товары:</h3>
             <ul>
                 <li th:each="product : ${foundProducts}">
                     <span th:text="${product.productName}"></span>
                     <span th:text="${product.price}"></span>
-                    <span th:text="${product.productType}"></span>
+                    <span th:text="${productTypeMap.get(product.typeId).name}"></span>
+                    <span th:text="${product.kol}"></span>
+                    
                 </li>
             </ul>
         </div>
-        
+
     </div>
 </body>
 </html>
