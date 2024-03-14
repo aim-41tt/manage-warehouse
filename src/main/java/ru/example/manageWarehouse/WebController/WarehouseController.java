@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ru.example.manageWarehouse.repositorys.ProductRepository;
 import ru.example.manageWarehouse.repositorys.ProductTypeRepository;
-import ru.example.manageWarehouse.services.ProducMmanagementService;
+import ru.example.manageWarehouse.services.ProductTypeService;
 
 @Controller
 public class WarehouseController {
@@ -20,36 +20,23 @@ public class WarehouseController {
 	private ProductTypeRepository productTypeRepository;
 
 	@Autowired
-	private ProducMmanagementService producMmanagement;
+	private ProductTypeService producMmanagement;
 
+	
 	@GetMapping("/warehouse")
 	public String showWarehouseForm(Model model) {
-
-
 		model.addAttribute("productTypesList", productTypeRepository.findAll());
 		model.addAttribute("productTypeMap", producMmanagement.MapProductType(productTypeRepository.findAll()));
 		model.addAttribute("foundProducts", productRepository.findAll());
-
 		return "warehouse";
 	}
 
 	@PostMapping("/searchWarehouse")
 	public String searchWarehouse(Model model, @RequestParam("searchByName") String searchByName,
-											   @RequestParam("searchByType") Long searchByType) {
+			@RequestParam("searchByType") Long searchByType) {
 		model.addAttribute("productTypesList", productTypeRepository.findAll());
 		model.addAttribute("productTypeMap", producMmanagement.MapProductType(productTypeRepository.findAll()));
-
-		if (!searchByName.isEmpty()) {
-			model.addAttribute("foundProducts", productRepository.findByProductName(searchByName));
-		} else {
-			if (searchByType > 0) {
-				model.addAttribute("foundProducts", productRepository.findByTypeId(searchByType));
-				
-			} else {
-				model.addAttribute("foundProducts", productRepository.findAll());
-			}
-		}
-		
+		model.addAttribute("foundProducts", producMmanagement.searchProducts(searchByName, searchByType));
 		return "warehouse";
 	}
 
