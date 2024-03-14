@@ -3,7 +3,9 @@ package ru.example.manageWarehouse.WebController;
 import java.util.Collections;
 import java.util.Map;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 
 import ru.example.manageWarehouse.model.Role;
@@ -31,7 +33,9 @@ public class RegistrationController {
 			model.put("message", "error");
 			return "registration";
 		}
-		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		user.setPassword(encoder.encode(user.getPassword()));
 		user.setRoles(Collections.singleton(Role.USER));
 		userRepositorys.save(user);
 		return "registration";

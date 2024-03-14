@@ -1,2 +1,0 @@
-select id,product_name,price,type_id,kol from product
--- select * from product_type
