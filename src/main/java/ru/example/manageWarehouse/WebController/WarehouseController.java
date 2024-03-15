@@ -31,7 +31,7 @@ public class WarehouseController {
 		return "warehouse";
 	}
 
-	@PostMapping("/searchWarehouse")
+	@PostMapping("/warehouse")
 	public String searchWarehouse(Model model, @RequestParam("searchByName") String searchByName,
 			@RequestParam("searchByType") Long searchByType) {
 		model.addAttribute("productTypesList", productTypeRepository.findAll());

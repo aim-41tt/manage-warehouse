@@ -37,6 +37,7 @@ public class RegistrationController {
 
 		user.setPassword(encoder.encode(user.getPassword()));
 		user.setRoles(Collections.singleton(Role.USER));
+		
 		userRepositorys.save(user);
 		return "registration";
 	}

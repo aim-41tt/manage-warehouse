@@ -1,8 +1,7 @@
 package ru.example.manageWarehouse.config;
 
-import java.util.Collections;
-
-import javax.sql.DataSource;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +38,7 @@ public class WebSecurityConfig  {
 			.formLogin((form) -> form
 				.loginPage("/login")
 				.permitAll()
-				.defaultSuccessUrl("/")
+
 			).csrf(AbstractHttpConfigurer::disable)
 			.logout((logout) -> logout.permitAll());
 
@@ -60,16 +59,22 @@ public class WebSecurityConfig  {
 	            @Override
 	            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 	                User user = userRepositorys.findByUsername(username);
-	                
-	                System.out.printf("%s , %s , %s ;;",username, user.getUsername(), user.getPassword());
+	               
 	                if (user == null) {
 	                    throw new UsernameNotFoundException("User not found!");
 	                }
+	                
+	                Collection<SimpleGrantedAuthority> authorities = user.getRoles().stream()
+	                        .map(role -> new SimpleGrantedAuthority(user.getRoles().toString()))
+	                        .collect(Collectors.toList());
+
+
+	                
 	                return new org.springframework.security.core.userdetails.User(
-	                        user.getUsername(),
+	                		user.getUsername(),
 	                        user.getPassword(),
-	                        Collections.singleton(new SimpleGrantedAuthority("USER"))
-	                );
+	                        authorities
+	                        );
 	            }
 	        };
 	    }
@@ -78,10 +83,5 @@ public class WebSecurityConfig  {
 	  
 	}
 
-
-/*
-.usersByUsernameQuery("select username, password from usr where username=?")
-.authoritiesByUsernameQuery("select u.username, ur.roles from users u inner join user role ur on u.id = ur.user id where u.username=?");
-*/
 
 

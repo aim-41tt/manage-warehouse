@@ -26,7 +26,7 @@ public class SupplyController {
 		return "supply";
 	}
 
-	@PostMapping("/processSupply")
+	@PostMapping("/supply")
 	public String processSupplyForm(@RequestParam("productName") String productName,
 			@RequestParam("price") double price, @RequestParam("productTypeId") Long typeId,
 			@RequestParam("kol") Long kol, Model model) {
