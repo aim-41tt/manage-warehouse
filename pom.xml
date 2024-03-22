@@ -24,10 +24,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         
+        <!--Зависимости безопасности-->
         <dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-starter-security</artifactId>
-   	</dependency>
+   		</dependency>
    		
 		<!--Зависимости для бд-->
          <dependency>

@@ -7,7 +7,12 @@
     <title>Поставки</title>
 </head>
 <body>
+
     <div class="container">
+    <div class="topmenu" th:each="user : ${user}">
+    <h3>User: <span th:text="${user.username}"></span></h3>
+	</div>
+
         <h2>Запись поставок</h2>
         <form action="/supply" method="post" enctype="multipart/form-data">
             <label for="productName">Название товара:</label>

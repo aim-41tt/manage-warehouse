@@ -29,6 +29,51 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	private Set<Role> roles;
 
+	
+	public boolean pravOnNullUserName(){
+		return !this.username.equals(null) || !this.username.isEmpty() ;
+	}
+	
+	public boolean pravOnNullPassword() {
+		return !this.password.equals(null) || !this.password.isEmpty();
+	}
+	
+	
+	/**
+	 * @param username
+	 * @param roles
+	 */
+	public User(String username, Set<Role> roles) {
+		this.username = username;
+		this.roles = roles;
+	}
+	
+	
+	/**
+	 * @param username
+	 * @param password
+	 * @param roles
+	 */
+	public User(String username, String password, Set<Role> roles) {
+		this.username = username;
+		this.password = password;
+		this.roles = roles;
+	}
+
+	/**
+	 * @param username
+	 * @param password
+	 */
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
+	
+	public User() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}
