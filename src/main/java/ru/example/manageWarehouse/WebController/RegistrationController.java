@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 
 import ru.example.manageWarehouse.model.User;
 import ru.example.manageWarehouse.services.RegistrationServis;
@@ -20,7 +21,7 @@ public class RegistrationController {
 	private RegistrationServis registrationServis;
 	
 	@GetMapping("/registration")
-	public String registration() {
+	public String registration(Model model) {
 		return "registration";
 	}
 	
